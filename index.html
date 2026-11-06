@@ -32,6 +32,7 @@
         <a href="#experience"><span data-l="en">Experience</span><span data-l="fr">Expériences</span></a>
         <a href="#skills"><span data-l="en">Skills</span><span data-l="fr">Compétences</span></a>
         <a href="#education"><span data-l="en">Education</span><span data-l="fr">Éducation</span></a>
+        <a href="#book" class="needs-booking" hidden><span data-l="en">Book a meeting</span><span data-l="fr">Rendez-vous</span></a>
         <a href="#contact">Contact</a>
       </nav>
       <div class="nav-tools">
@@ -60,7 +61,8 @@
           <span data-l="fr">Je transforme les données géospatiales, clients et métiers en décisions — des modèles prédictifs de churn et de ruptures de stock au ciblage des investissements pour les déploiements Mobile, FTTx et Orange Money chez Orange RDC.</span>
         </p>
         <div class="cta">
-          <a class="btn primary" href="#contact"><span data-l="en">Get in touch</span><span data-l="fr">Me contacter</span></a>
+          <a class="btn primary needs-booking" href="#book" hidden><span data-l="en">Book a meeting</span><span data-l="fr">Prendre rendez-vous</span></a>
+          <a class="btn" href="#contact"><span data-l="en">Get in touch</span><span data-l="fr">Me contacter</span></a>
           <a class="btn" href="assets/cv/Elie_Mulamba_CV_EN.pdf" download data-l="en">Download CV (EN)</a>
           <a class="btn" href="assets/cv/Elie_Mulamba_CV_FR.pdf" download data-l="fr">Télécharger le CV (FR)</a>
         </div>
@@ -220,6 +222,23 @@
         </article>
       </div>
       <p class="note"><span data-l="en">References available on request.</span><span data-l="fr">Références disponibles sur demande.</span></p>
+    </section>
+
+    <!-- BOOKING -->
+    <!-- Calendly scheduling link; clear data-calendly-url to hide this section -->
+    <section id="book" class="section wrap" data-calendly-url="https://calendly.com/elie-mulamba5/30min" hidden>
+      <h2><span data-l="en">Book a meeting</span><span data-l="fr">Prendre rendez-vous</span></h2>
+      <p class="lead">
+        <span data-l="en">Pick a time that suits you for a call about a project, a collaboration or a speaking request. You'll get a calendar invite by email.</span>
+        <span data-l="fr">Choisissez un créneau qui vous convient pour échanger sur un projet, une collaboration ou une intervention. Vous recevrez une invitation par e-mail.</span>
+      </p>
+      <div class="booking card" id="booking-widget" aria-live="polite">
+        <p class="booking-loading"><span data-l="en">Loading available times…</span><span data-l="fr">Chargement des créneaux…</span></p>
+      </div>
+      <p class="note">
+        <span data-l="en">Calendar not showing?</span><span data-l="fr">Le calendrier ne s'affiche pas ?</span>
+        <a id="booking-fallback" href="#" target="_blank" rel="noopener"><span data-l="en">Open the booking page</span><span data-l="fr">Ouvrir la page de réservation</span></a>
+      </p>
     </section>
 
     <!-- CONTACT -->
