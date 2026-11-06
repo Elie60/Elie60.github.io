@@ -22,15 +22,15 @@
 
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  // Booking: shown only when a Calendly link is set on #book. The widget
-  // script loads when the section comes near the screen, to keep the page fast.
+  // Booking: the buttons link straight to Calendly. The embedded calendar is
+  // an extra; its script loads when the section comes near the screen, and if
+  // the browser blocks it the box is hidden so visitors use the button instead.
   var book = document.getElementById('book');
   var calUrl = book && book.getAttribute('data-calendly-url');
-  if (!calUrl) return;
+  var box = document.getElementById('booking-widget');
+  if (!calUrl || !box) return;
 
-  book.hidden = false;
-  document.querySelectorAll('.needs-booking').forEach(function (el) { el.hidden = false; });
-  document.getElementById('booking-fallback').href = calUrl;
+  function hideEmbed() { box.hidden = true; }
 
   function widgetUrl() {
     var dark = root.getAttribute('data-theme') === 'dark' ||
@@ -47,12 +47,15 @@
     var s = document.createElement('script');
     s.src = 'https://assets.calendly.com/assets/external/widget.js';
     s.async = true;
+    s.onerror = hideEmbed;
     s.onload = function () {
-      var box = document.getElementById('booking-widget');
+      if (!window.Calendly) return hideEmbed();
       box.innerHTML = '';
       window.Calendly.initInlineWidget({ url: widgetUrl(), parentElement: box });
     };
     document.head.appendChild(s);
+    // If nothing has appeared after 12 s (blocked by the browser), hide the box.
+    setTimeout(function () { if (!box.querySelector('iframe')) hideEmbed(); }, 12000);
   }
 
   if ('IntersectionObserver' in window) {
